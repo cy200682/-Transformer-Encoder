@@ -8,6 +8,18 @@
 
 # 项目特点
 
+我实现了一个基于 PyTorch 的 Mini Transformer 项目，核心是一个 Encoder-only 的 Transformer 模型，用于进行基础的语言建模任务。
+
+整个项目从底层开始实现，没有直接调用现成 Transformer API，而是自己实现了 Tokenizer、Embedding、Positional Encoding、Scaled Dot-Product Attention、Multi-Head Attention、Feed Forward Network 以及多层 Transformer Encoder。
+
+在数据处理部分，我实现了文本清洗、词表构建以及 token 到 index 的映射，并通过 Dataset 和 DataLoader 完成批量数据加载。
+
+模型部分主要基于 Self-Attention 机制，通过多头注意力建模 token 之间的上下文关系，并结合残差连接、LayerNorm 和 FeedForward 网络提升训练稳定性和表达能力。
+
+训练阶段使用 CrossEntropyLoss 作为 token-level 分类损失，并使用 Adam 优化器进行训练，同时加入 Dropout 防止过拟合。
+
+在项目过程中，我比较深入地理解了 Transformer 的核心机制，比如 attention 的计算过程、为什么 Transformer 能并行化、位置编码的作用，以及 padding mask 对 attention 的影响等。目前项目还存在一些可以继续优化的地方，例如完善 padding mask、加入 causal mask，并扩展 Decoder 结构以支持 GPT-style 的文本生成。
+
 - 从零实现 Transformer Encoder 架构
 - 实现完整 NLP pipeline（Tokenizer → Dataset → DataLoader）
 - 实现 Attention 机制核心模块
